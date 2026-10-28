@@ -3,22 +3,425 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>East Park Entertainment</title>
-  <meta name="description" content="East Park Entertainment interviews comic creators, authors, artists, writers and comic shops around the world.">
+  <title>East Park Entertainment | The people behind the panels</title>
+  <meta name="description" content="East Park Entertainment interviews comic creators, authors, artists, writers and comic shops around the world, and helps more people find them.">
+  <meta name="theme-color" content="#fbf6ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#131116" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="East Park Entertainment">
+  <meta property="og:description" content="Interviews with the people behind the panels.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){try{var p=JSON.parse(localStorage.getItem('epe:prefs')||'{}'),d=document.documentElement,m=function(q){return matchMedia(q).matches};d.dataset.theme=p.theme||(m('(prefers-color-scheme: dark)')?'dark':'light');d.dataset.text=String(p.text||0);d.dataset.contrast=p.contrast?'high':'normal';d.dataset.motion=(p.motion===undefined?m('(prefers-reduced-motion: reduce)'):p.motion)?'reduce':'full';d.dataset.spacing=p.spacing?'wide':'normal';d.dataset.links=p.links?'highlight':'normal';}catch(e){}})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css">
-  <style>
-    main { min-height: 100vh; display: grid; place-items: center; text-align: center; padding: var(--gutter); }
-    h1 { font-size: var(--step-4); margin: 1rem 0; }
-    p { color: var(--ink-2); max-width: 46ch; margin-inline: auto; }
-  </style>
+  <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-  <main>
-    <div>
-      <span class="brand__mark" aria-hidden="true">EPE</span>
-      <h1>East Park Entertainment</h1>
-      <p>Interviews with the people behind the panels. Our new site is on its way.</p>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="announce" id="announce" hidden>
+    <div class="container announce__inner">
+      <span class="announce__badge">New</span>
+      <a href="#interviews" class="announce__text" id="announce-text"></a>
+      <button type="button" class="announce__close" id="announce-close" aria-label="Dismiss announcement">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
     </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="East Park Entertainment, home">
+        <span class="brand__mark" aria-hidden="true">EPE</span>
+        <span class="brand__text" aria-hidden="true">East Park<small>Entertainment</small></span>
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <button type="button" class="nav__toggle btn btn--ghost btn--icon" aria-expanded="false" aria-controls="nav-menu" id="nav-toggle">
+          <span class="visually-hidden">Menu</span>
+          <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+        <ul class="nav__menu" id="nav-menu" role="list">
+          <li><a href="#interviews">Interviews</a></li>
+          <li><a href="#who">Who we feature</a></li>
+          <li><a href="#shops">Shops</a></li>
+          <li><a href="#about">About</a></li>
+          <li class="nav__cta"><a class="btn btn--red btn--sm" href="#pitch">Get featured</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-tools">
+        <button type="button" class="btn btn--ghost btn--icon btn--sm" data-theme-toggle aria-label="Switch to dark theme">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button type="button" class="btn btn--yellow btn--icon btn--sm" data-a11y-toggle aria-label="Accessibility settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="1.8" fill="currentColor"/><path d="M5 8.5l7 1.5 7-1.5M12 10v4.5M12 14.5L9 21M12 14.5l3 6.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+
+    <!-- HERO -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span> Interviews · Spotlights · Shop tours</p>
+          <h1 id="hero-title" class="hero__title reveal">
+            Every panel has a person behind it.
+            <span class="hero__sub">We talk to the
+              <span class="rotator" aria-hidden="true"><span class="rotator__word" id="rotator">creators</span></span><span class="visually-hidden">creators, authors, artists, writers and comic shops</span>
+              who make comics happen.
+            </span>
+          </h1>
+          <p class="hero__lede reveal">East Park Entertainment sits down with comic creators, authors, artists, writers and the shops that keep it all going, all over the world. Then we make sure more people find them.</p>
+          <div class="hero__actions reveal">
+            <a class="btn btn--red" href="#interviews">
+              Read the interviews
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="#pitch">Pitch yourself</a>
+          </div>
+          <dl class="hero__stats reveal" aria-label="East Park in numbers">
+            <div><dt>Interviews</dt><dd data-count data-stat="interviews">0</dd></div>
+            <div><dt>Countries</dt><dd data-count data-stat="countries">0</dd></div>
+            <div><dt>Followers</dt><dd data-count data-stat="followers" data-suffix="K">0</dd></div>
+          </dl>
+        </div>
+
+        <div class="hero__art" aria-hidden="true">
+          <div class="page" id="hero-page">
+            <div class="panel panel--a">
+              <div class="bubble bubble--left">So… how did it all start?</div>
+              <div class="mic">
+                <svg viewBox="0 0 64 64"><rect x="22" y="6" width="20" height="32" rx="10" fill="var(--red)" stroke="var(--line)" stroke-width="3"/><path d="M14 30a18 18 0 0 0 36 0M32 48v10M22 58h20" fill="none" stroke="var(--line)" stroke-width="3" stroke-linecap="round"/><path d="M27 14h10M27 20h10M27 26h10" stroke="var(--line)" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg>
+              </div>
+            </div>
+            <div class="panel panel--b">
+              <div class="burst"><span>POW!</span></div>
+            </div>
+            <div class="panel panel--c">
+              <svg class="nib" viewBox="0 0 80 120"><path d="M40 4 L70 50 L52 112 L40 118 L28 112 L10 50 Z" fill="var(--yellow)" stroke="var(--line)" stroke-width="3.5" stroke-linejoin="round"/><path d="M40 60 V116" stroke="var(--line)" stroke-width="3"/><circle cx="40" cy="58" r="6" fill="var(--paper)" stroke="var(--line)" stroke-width="3"/></svg>
+              <span class="ink-line"></span>
+            </div>
+            <div class="panel panel--d">
+              <div class="bubble bubble--right">With a pencil and a very bad idea.</div>
+              <div class="sfx">scritch<br>scratch</div>
+            </div>
+          </div>
+          <div class="sticker sticker--1">Est. East Park</div>
+          <div class="sticker sticker--2">★ Indie-first</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <section class="marquee" aria-label="What we cover">
+      <div class="marquee__track" id="marquee">
+        <ul class="marquee__list" role="list">
+          <li>Comic creators</li><li>✦</li><li>Authors</li><li>✦</li><li>Artists</li><li>✦</li><li>Writers</li><li>✦</li><li>Comic shops</li><li>✦</li><li>Inkers</li><li>✦</li><li>Colourists</li><li>✦</li><li>Letterers</li><li>✦</li><li>Zine makers</li><li>✦</li>
+        </ul>
+        <ul class="marquee__list" role="list" aria-hidden="true">
+          <li>Comic creators</li><li>✦</li><li>Authors</li><li>✦</li><li>Artists</li><li>✦</li><li>Writers</li><li>✦</li><li>Comic shops</li><li>✦</li><li>Inkers</li><li>✦</li><li>Colourists</li><li>✦</li><li>Letterers</li><li>✦</li><li>Zine makers</li><li>✦</li>
+        </ul>
+      </div>
+      <button type="button" class="marquee__pause" id="marquee-pause" aria-pressed="false">
+        <span class="visually-hidden">Pause scrolling text</span>
+        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg>
+      </button>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section featured" aria-labelledby="featured-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">This week's cover story</p>
+          <h2 id="featured-title" class="visually-hidden">Featured interview</h2>
+        </div>
+        <article class="cover reveal" id="cover"></article>
+      </div>
+    </section>
+
+    <!-- WHO WE FEATURE -->
+    <section class="section who" id="who" aria-labelledby="who-title">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="eyebrow">Who we feature</p>
+          <h2 id="who-title" class="section-title">Five kinds of people. <em>One</em> obsession.</h2>
+          <p class="section-lede">Comics take a whole crew. We give each of them the mic.</p>
+        </div>
+        <ul class="who__grid" role="list">
+          <li class="who-card reveal" data-color="yellow" data-tilt>
+            <span class="who-card__num" aria-hidden="true">01</span>
+            <h3>Comic creators</h3>
+            <p>The do-it-all folks writing, drawing and shipping their own worlds, from webcomics to graphic novels.</p>
+            <button type="button" class="who-card__link" data-filter-jump="creator">See creator interviews <span aria-hidden="true">→</span></button>
+          </li>
+          <li class="who-card reveal" data-color="mint" data-tilt>
+            <span class="who-card__num" aria-hidden="true">02</span>
+            <h3>Authors</h3>
+            <p>Novelists, memoirists and storytellers bringing long-form craft to the page.</p>
+            <button type="button" class="who-card__link" data-filter-jump="author">See author interviews <span aria-hidden="true">→</span></button>
+          </li>
+          <li class="who-card reveal" data-color="red" data-tilt>
+            <span class="who-card__num" aria-hidden="true">03</span>
+            <h3>Artists</h3>
+            <p>Pencillers, inkers, colourists and letterers: the people who make the page breathe.</p>
+            <button type="button" class="who-card__link" data-filter-jump="artist">See artist interviews <span aria-hidden="true">→</span></button>
+          </li>
+          <li class="who-card reveal" data-color="blue" data-tilt>
+            <span class="who-card__num" aria-hidden="true">04</span>
+            <h3>Writers</h3>
+            <p>Scripters and editors who build the beats, the dialogue and the silences in between.</p>
+            <button type="button" class="who-card__link" data-filter-jump="writer">See writer interviews <span aria-hidden="true">→</span></button>
+          </li>
+          <li class="who-card reveal" data-color="violet" data-tilt>
+            <span class="who-card__num" aria-hidden="true">05</span>
+            <h3>Comic shops</h3>
+            <p>The independent shops, back rooms and reading corners where communities form.</p>
+            <button type="button" class="who-card__link" data-filter-jump="shop">See shop spotlights <span aria-hidden="true">→</span></button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- INTERVIEWS -->
+    <section class="section interviews" id="interviews" aria-labelledby="interviews-title">
+      <div class="container">
+        <div class="section-head section-head--row reveal">
+          <div>
+            <p class="eyebrow">The archive</p>
+            <h2 id="interviews-title" class="section-title">Latest interviews</h2>
+          </div>
+          <div class="search">
+            <label for="search" class="visually-hidden">Search interviews</label>
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <input class="input" id="search" type="search" placeholder="Search names, places, topics…" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="filters reveal" role="group" aria-label="Filter interviews by category" id="filters">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-filter="creator" aria-pressed="false">Creators</button>
+          <button type="button" class="chip" data-filter="author" aria-pressed="false">Authors</button>
+          <button type="button" class="chip" data-filter="artist" aria-pressed="false">Artists</button>
+          <button type="button" class="chip" data-filter="writer" aria-pressed="false">Writers</button>
+          <button type="button" class="chip" data-filter="shop" aria-pressed="false">Shops</button>
+        </div>
+
+        <p class="results-status" id="results-status" role="status" aria-live="polite"></p>
+        <ul class="cards" id="cards" role="list"></ul>
+        <div class="empty" id="empty" hidden>
+          <div class="bubble bubble--center">Hmm… nobody here yet.</div>
+          <p>Try another search or category.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOPS -->
+    <section class="section shops" id="shops" aria-labelledby="shops-title">
+      <div class="container">
+        <div class="section-head section-head--row reveal">
+          <div>
+            <p class="eyebrow">World tour</p>
+            <h2 id="shops-title" class="section-title">Comic shops we love</h2>
+            <p class="section-lede">Independent shops from around the world, each one a home for its local scene.</p>
+          </div>
+          <div class="carousel-controls">
+            <button type="button" class="btn btn--icon" id="shops-prev" aria-label="Previous shops" aria-controls="shops-track">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            </button>
+            <button type="button" class="btn btn--icon" id="shops-next" aria-label="Next shops" aria-controls="shops-track">
+              <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="shops__track" id="shops-track" role="list" tabindex="0" aria-label="Comic shops, scrollable list"></ul>
+    </section>
+
+    <!-- ABOUT / HOW -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container about__grid">
+        <div class="about__copy reveal">
+          <p class="eyebrow">About East Park</p>
+          <h2 id="about-title" class="section-title">Loud about <span class="hl">small</span> creators.</h2>
+          <p>East Park Entertainment started as one account with one rule: <strong>ask better questions</strong>. We skip "where do you get your ideas" and get to the good stuff: the process, the near-misses, the shop owner who took a chance on someone's first zine.</p>
+          <p>Every interview gets shared with our community, and every guest gets a full promo kit to use however they like.</p>
+        </div>
+        <ol class="steps" role="list">
+          <li class="step reveal">
+            <span class="step__num" aria-hidden="true">1</span>
+            <div><h3>We find you</h3><p>Or you find us. Pitch yourself, your favourite creator or your local shop.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__num" aria-hidden="true">2</span>
+            <div><h3>We talk</h3><p>A relaxed interview, recorded or written. Your story, your words.</p></div>
+          </li>
+          <li class="step reveal">
+            <span class="step__num" aria-hidden="true">3</span>
+            <div><h3>We shout about it</h3><p>Published, promoted across our channels, plus shareable art for yours.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- QUOTES -->
+    <section class="section quotes" aria-labelledby="quotes-title">
+      <div class="container">
+        <h2 id="quotes-title" class="section-title reveal">Said on the record</h2>
+        <ul class="quotes__grid" role="list" id="quotes"></ul>
+      </div>
+    </section>
+
+    <!-- PITCH -->
+    <section class="section pitch" id="pitch" aria-labelledby="pitch-title">
+      <div class="container pitch__grid">
+        <div class="pitch__copy reveal">
+          <p class="eyebrow">Get featured</p>
+          <h2 id="pitch-title" class="section-title">Your turn in the spotlight.</h2>
+          <p>Make comics, sell them, or know someone who does? Tell us about them. We read every pitch.</p>
+          <ul class="pitch__perks" role="list">
+            <li>Full-length interview</li>
+            <li>Cross-platform promotion</li>
+            <li>Custom share graphics</li>
+          </ul>
+        </div>
+
+        <form class="pitch__form reveal" id="pitch-form" novalidate aria-describedby="form-note">
+          <p class="form-note" id="form-note">Fields marked <span aria-hidden="true">*</span><span class="visually-hidden">with an asterisk</span> are required.</p>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Name <span aria-hidden="true">*</span></label>
+              <input class="input" id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="f-name-err">
+              <p class="error" id="f-name-err"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span aria-hidden="true">*</span></label>
+              <input class="input" id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
+              <p class="error" id="f-email-err"></p>
+            </div>
+          </div>
+          <fieldset class="field roles">
+            <legend class="label">I am / they are a… <span aria-hidden="true">*</span></legend>
+            <div class="roles__opts">
+              <label><input type="radio" name="role" value="creator" required> Creator</label>
+              <label><input type="radio" name="role" value="author"> Author</label>
+              <label><input type="radio" name="role" value="artist"> Artist</label>
+              <label><input type="radio" name="role" value="writer"> Writer</label>
+              <label><input type="radio" name="role" value="shop"> Comic shop</label>
+            </div>
+            <p class="error" id="f-role-err"></p>
+          </fieldset>
+          <div class="field">
+            <label for="f-link">Portfolio or shop link</label>
+            <input class="input" id="f-link" name="link" type="url" inputmode="url" placeholder="https://" aria-describedby="f-link-hint f-link-err">
+            <p class="hint" id="f-link-hint">Optional. Website, social profile or store page.</p>
+            <p class="error" id="f-link-err"></p>
+          </div>
+          <div class="field">
+            <label for="f-msg">Tell us the story <span aria-hidden="true">*</span></label>
+            <textarea class="textarea" id="f-msg" name="message" required minlength="20" maxlength="1200" aria-describedby="f-msg-hint f-msg-err"></textarea>
+            <p class="hint" id="f-msg-hint"><span id="f-msg-count">0</span> / 1200 characters, at least 20.</p>
+            <p class="error" id="f-msg-err"></p>
+          </div>
+          <label class="check"><input type="checkbox" name="consent" id="f-consent" required aria-describedby="f-consent-err"> <span>I'm happy for East Park to contact me about this pitch. <span aria-hidden="true">*</span></span></label>
+          <p class="error field-error-solo" id="f-consent-err"></p>
+          <button class="btn btn--red pitch__submit" type="submit">
+            Send pitch
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-8-6 16-2-6z"/></svg>
+          </button>
+          <div class="form-success" id="form-success" tabindex="-1" hidden>
+            <div class="burst burst--sm"><span>Got it!</span></div>
+            <p><strong>Pitch received.</strong> Thanks! We'll be in touch if it's a fit.</p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section newsletter" aria-labelledby="news-title">
+      <div class="container">
+        <div class="newsletter__box reveal">
+          <div>
+            <h2 id="news-title">The Sunday Panel</h2>
+            <p>One email a week with new interviews, shop finds and a creator to watch. No spam, ever.</p>
+          </div>
+          <form class="newsletter__form" id="news-form" novalidate>
+            <label for="news-email" class="visually-hidden">Email address</label>
+            <input class="input" type="email" id="news-email" placeholder="you@example.com" autocomplete="email" required aria-describedby="news-err">
+            <button class="btn btn--yellow" type="submit">Subscribe</button>
+            <p class="error" id="news-err" role="alert"></p>
+          </form>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer" aria-labelledby="footer-title">
+    <h2 id="footer-title" class="visually-hidden">Site footer</h2>
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="brand" href="#top" aria-label="East Park Entertainment, back to top">
+            <span class="brand__mark" aria-hidden="true">EPE</span>
+            <span class="brand__text" aria-hidden="true">East Park<small>Entertainment</small></span>
+          </a>
+          <p>Interviews with the people behind the panels. Made with ink, coffee and too many longboxes.</p>
+        </div>
+        <nav aria-label="Footer">
+          <h3>Explore</h3>
+          <ul role="list">
+            <li><a href="#interviews">Interviews</a></li>
+            <li><a href="#shops">Comic shops</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#pitch">Get featured</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h3>Follow</h3>
+          <ul role="list">
+            <li><a href="#" aria-label="Instagram (opens profile)">Instagram</a></li>
+            <li><a href="#" aria-label="TikTok (opens profile)">TikTok</a></li>
+            <li><a href="#" aria-label="YouTube (opens channel)">YouTube</a></li>
+            <li><a href="admin.html">Team login</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="a11y-statement" id="accessibility" aria-labelledby="a11y-statement-title">
+        <div class="a11y-statement__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="1.8" fill="currentColor"/><path d="M5 8.5l7 1.5 7-1.5M12 10v4.5M12 14.5L9 21M12 14.5l3 6.5"/></svg>
+        </div>
+        <div>
+          <h3 id="a11y-statement-title">Accessibility statement</h3>
+          <p>East Park Entertainment wants everyone to be able to read, browse and pitch to us. This site aims to meet <strong>WCAG 2.2 Level AA</strong>. It works with keyboards and screen readers, respects your system's reduced-motion and colour preferences, and has <button type="button" class="linklike" data-open-a11y>built-in settings</button> for text size, contrast, spacing, link highlighting and motion.</p>
+          <p>Something not working for you? Email <a href="mailto:access@eastparkentertainment.com">access@eastparkentertainment.com</a> and we'll reply within 5 working days. <a href="accessibility.html">Read the full accessibility statement</a>.</p>
+        </div>
+      </section>
+
+      <div class="footer__bottom">
+        <p>© <span id="year">2026</span> East Park Entertainment. All rights reserved.</p>
+        <p><a href="accessibility.html">Accessibility</a> · <a href="#top">Back to top ↑</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="modal interview-modal" id="interview-modal" aria-labelledby="modal-title">
+    <button type="button" class="btn btn--icon btn--sm modal__close" data-close aria-label="Close interview">
+      <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div id="modal-body"></div>
+  </dialog>
+
+  <script src="assets/js/store.js"></script>
+  <script src="assets/js/a11y.js"></script>
+  <script src="assets/js/site.js"></script>
 </body>
 </html>

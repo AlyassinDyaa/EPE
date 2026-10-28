@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessibility statement | East Park Entertainment</title>
+  <meta name="description" content="How East Park Entertainment makes its website accessible, and how to tell us when something doesn't work for you.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <script>
+    (function(){try{var p=JSON.parse(localStorage.getItem('epe:prefs')||'{}'),d=document.documentElement,m=function(q){return matchMedia(q).matches};d.dataset.theme=p.theme||(m('(prefers-color-scheme: dark)')?'dark':'light');d.dataset.text=String(p.text||0);d.dataset.contrast=p.contrast?'high':'normal';d.dataset.motion=(p.motion===undefined?m('(prefers-reduced-motion: reduce)'):p.motion)?'reduce':'full';d.dataset.spacing=p.spacing?'wide':'normal';d.dataset.links=p.links?'highlight':'normal';}catch(e){}})();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="East Park Entertainment, home">
+        <span class="brand__mark" aria-hidden="true">EPE</span>
+        <span class="brand__text" aria-hidden="true">East Park<small>Entertainment</small></span>
+      </a>
+      <div class="header-tools">
+        <a class="btn btn--ghost btn--sm" href="index.html">← Back to site</a>
+        <button type="button" class="btn btn--ghost btn--icon btn--sm" data-theme-toggle aria-label="Switch to dark theme">
+          <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+          <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+        <button type="button" class="btn btn--yellow btn--icon btn--sm" data-a11y-toggle aria-label="Accessibility settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4.5" r="1.8" fill="currentColor"/><path d="M5 8.5l7 1.5 7-1.5M12 10v4.5M12 14.5L9 21M12 14.5l3 6.5"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1" class="doc">
+    <article class="container doc__inner">
+      <p class="eyebrow">Last reviewed 28 October 2026</p>
+      <h1>Accessibility statement</h1>
+      <p>East Park Entertainment exists to give creators a bigger audience. That only works if <strong>everyone</strong> can read, browse and get in touch, whatever device, assistive technology or setup they use.</p>
+
+      <h2>Our standard</h2>
+      <p>We aim to meet the <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a> at Level AA across the public site and the team dashboard.</p>
+
+      <h2>What we've built in</h2>
+      <ul>
+        <li>Full keyboard support, with a visible focus outline and a "Skip to main content" link on every page.</li>
+        <li>Semantic headings, landmarks and labels so screen readers (NVDA, JAWS, VoiceOver, TalkBack) can navigate easily.</li>
+        <li>Colour contrast of at least 4.5:1 for body text, plus an optional high-contrast mode.</li>
+        <li>Respect for your system's dark mode and reduced-motion settings.</li>
+        <li>Animations and scrolling text that can be paused or turned off.</li>
+        <li>Atkinson Hyperlegible, a typeface designed for low-vision readers, for all body text.</li>
+        <li>Layouts that reflow from 320px phones to wide desktop screens and support 400% zoom without horizontal scrolling.</li>
+        <li>Form fields with visible labels, clear instructions and error messages that are announced to screen readers.</li>
+        <li>Touch targets of at least 44 × 44 pixels.</li>
+      </ul>
+
+      <h2>Personalise the site</h2>
+      <p>Open the <button type="button" class="linklike" data-open-a11y>accessibility settings</button> (the yellow button at the top of every page) to change:</p>
+      <ul>
+        <li>Text size, in four steps</li>
+        <li>Light or dark theme</li>
+        <li>High contrast</li>
+        <li>Reduced motion</li>
+        <li>Readable spacing (wider letter, word and line spacing)</li>
+        <li>Highlighted links</li>
+      </ul>
+      <p>Your choices are saved on your device and apply across the whole site.</p>
+
+      <h2>Known limitations</h2>
+      <ul>
+        <li>Creator portraits are generated illustrations, not photos. They're decorative and hidden from screen readers. The person's name is always given as text.</li>
+        <li>Any audio or video interviews we publish will come with full transcripts. If you find one without a transcript, please let us know.</li>
+      </ul>
+
+      <h2>Feedback and contact</h2>
+      <div class="callout">
+        <p>If anything on this site is hard to use, or you need content in a different format, tell us:</p>
+        <p><strong>Email:</strong> <a href="mailto:access@eastparkentertainment.com">access@eastparkentertainment.com</a></p>
+        <p>We aim to reply within 5 working days.</p>
+      </div>
+
+      <h2>How we test</h2>
+      <p>We test with automated checks, keyboard-only navigation, screen readers on desktop and mobile, 200% and 400% browser zoom, and Windows High Contrast / forced-colours mode. We review this statement at least every six months.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__bottom">
+      <p>© <span id="year">2026</span> East Park Entertainment.</p>
+      <p><a href="index.html">Home</a> · <a href="index.html#pitch">Get featured</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/a11y.js"></script>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
