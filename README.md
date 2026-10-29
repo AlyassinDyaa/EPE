@@ -2,7 +2,7 @@
 
 Website for **East Park Entertainment**: interviews with comic creators, authors, artists, writers and comic shops around the world.
 
-Static site (HTML, CSS, vanilla JS). No build step and no dependencies, so it deploys as-is to Vercel, Netlify or GitHub Pages.
+Static front end (HTML, CSS, vanilla JS) plus Vercel serverless functions in `/api`, backed by Upstash Redis. No npm dependencies and no build step.
 
 ## Pages
 
@@ -15,23 +15,40 @@ Static site (HTML, CSS, vanilla JS). No build step and no dependencies, so it de
 ## Run locally
 
 ```bash
-python -m http.server 5173
+npm run dev
 ```
 
-Then open http://localhost:5173.
+Then open http://localhost:3000. You can pass a different port: `node dev-server.js 5173`.
+
+- Copy `.env.example` to `.env.local` and set `ADMIN_PASSWORD` and `SESSION_SECRET`. If you don't, the dev server makes a one-off password and prints it in the terminal.
+- Without Redis variables, the API uses an **in-memory database** that resets each time the server restarts. Add `KV_REST_API_URL` and `KV_REST_API_TOKEN` to `.env.local` to use your real database instead.
 
 ## Deploy on Vercel
 
-Import the repo, choose **Other** as the framework preset, and leave the build command empty. The output directory is the repo root.
+1. Import the repo. Choose **Other** as the framework preset and leave the build command empty.
+2. **Storage → Create / Connect → Upstash (Redis)**. Connect it to the project. This adds `KV_REST_API_URL` and `KV_REST_API_TOKEN` automatically.
+3. **Settings → Environment Variables**: add
+   - `ADMIN_PASSWORD`: the team's dashboard password (8+ characters, ideally much longer)
+   - `SESSION_SECRET`: 32+ random characters. Generate one with `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+4. Redeploy. The first visit fills the empty database with the starter content from `data/seed.json`.
 
-## How data works (important)
+## API
 
-Content lives in `assets/js/store.js` (seed data) and is saved to the visitor's **localStorage**. That means:
+| Route | Access | Purpose |
+| --- | --- | --- |
+| `GET /api/public` | public | Published interviews, shops and public settings. Cached by Vercel's CDN for 30s |
+| `POST /api/pitch` | public | "Get featured" form. Validated, rate-limited (5/hour per IP) and protected by a honeypot field |
+| `POST /api/subscribe` | public | Newsletter sign-up, rate-limited |
+| `GET / POST / DELETE /api/auth` | public | Session check, sign in, sign out |
+| `/api/admin` | team | Read everything; create, update and delete interviews, shops, pitches and settings |
 
-- Changes made in the dashboard show up on the public site **in the same browser only**.
-- The dashboard sign-in is a **demo gate** (`DEMO_PASSCODE` in `assets/js/admin.js`), not real security.
+### Security
 
-Before launch, connect a real backend (for example Supabase, Firebase or a headless CMS) and real authentication. The store exposes `get / update / save`, so you only need to swap those for API calls.
+- **Sign-in:** a single team password, compared in constant time. Sign-in attempts are rate-limited (10 per 15 minutes per IP).
+- **Sessions:** an HMAC-signed, `HttpOnly`, `Secure`, `SameSite=Strict` cookie that lasts 12 hours.
+- **CSRF:** every write request must carry an `X-EPE: 1` header. Browsers can't send that header cross-site without a CORS preflight, and the API never allows one.
+- **Validation:** all input is checked and length-limited on the server, and everything the pages render is HTML-escaped.
+- **Privacy:** pitches (including email addresses) and subscriber emails are only returned to signed-in team members.
 
 ## Accessibility
 
@@ -45,17 +62,22 @@ Built to WCAG 2.2 AA:
 - 44px minimum touch targets
 - Atkinson Hyperlegible body font
 
-The yellow ♿ button opens settings for text size, theme, high contrast, reduced motion, readable spacing and link highlighting. The scrolling marquee has its own pause button.
+The ♿ button opens settings for text size, theme, high contrast, reduced motion, readable spacing and link highlighting.
 
 ## Structure
 
 ```
+api/
+  _lib.js         Redis client, sessions, validation, rate limiting (not a route)
+  public.js  pitch.js  subscribe.js  auth.js  admin.js
+data/seed.json    starter content written to an empty database
 assets/
-  css/base.css    design tokens, buttons, forms, a11y panel, dialogs
+  css/base.css    design tokens (white/gray/black), buttons, forms, a11y panel, dialogs
   css/site.css    public site
   css/admin.css   dashboard
-  js/store.js     shared data store and seed content
+  js/store.js     API client and shared helpers
   js/a11y.js      accessibility preferences, theme, toasts
-  js/site.js      public site interactions
+  js/site.js      public site
   js/admin.js     dashboard
+dev-server.js     local server for static files and /api
 ```

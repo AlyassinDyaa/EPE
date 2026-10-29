@@ -31,7 +31,7 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgb(21 18 15 / 0.28) 2px, transparent 2.5px);
+  background-image: radial-gradient(circle, rgb(10 10 10 / 0.28) 2px, transparent 2.5px);
   background-size: 16px 16px;
   mask-image: radial-gradient(circle at 70% 30%, #000, transparent 75%);
 }
@@ -87,7 +87,7 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
 }
 .side-nav a svg { width: 22px; flex: none; }
 .side-nav a:hover { background: var(--paper-2); }
-.side-nav a[aria-current="page"] { background: var(--yellow); color: #15120f; border-color: var(--line); box-shadow: var(--shadow-sm); transform: translate(-2px, -2px); }
+.side-nav a[aria-current="page"] { background: var(--yellow); color: #0a0a0a; border-color: var(--line); box-shadow: var(--shadow-sm); transform: translate(-2px, -2px); }
 .badge { margin-left: auto; min-width: 26px; padding: 0.05rem 0.45rem; border-radius: 999px; background: var(--red); color: var(--on-red); font-size: 0.8rem; text-align: center; }
 .sidebar__foot { margin-top: auto; display: grid; gap: 0.75rem; padding-top: 1rem; border-top: 1.5px dashed var(--paper-3); }
 .who-am-i { display: flex; gap: 0.7rem; align-items: center; font-weight: 700; }
@@ -245,11 +245,11 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
 /* ---------- Status pills ---------- */
 .pill { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.2rem 0.7rem; border: 1.5px solid var(--line); border-radius: 999px; font-size: 0.8rem; font-weight: 700; white-space: nowrap; }
 .pill::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
-.pill--published { background: var(--mint); color: #15120f; }
-.pill--scheduled { background: var(--yellow); color: #15120f; }
+.pill--published { background: var(--mint); color: #0a0a0a; }
+.pill--scheduled { background: var(--yellow); color: #0a0a0a; }
 .pill--draft { background: var(--paper-2); color: var(--ink); }
 .pill--new { background: var(--blue); color: var(--on-blue); }
-.pill--approved { background: var(--mint); color: #15120f; }
+.pill--approved { background: var(--mint); color: #0a0a0a; }
 .pill--declined { background: var(--paper-3); color: var(--ink); }
 
 /* ---------- Toolbar & table ---------- */
@@ -304,7 +304,7 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
 dialog.editor { width: min(820px, calc(100vw - 2rem)); overflow: hidden; }
 .editor form { display: flex; flex-direction: column; max-height: calc(100dvh - 2rem); }
 .editor__head, .editor__foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem clamp(1rem, 3vw, 1.75rem); }
-.editor__head { border-bottom: 2px solid var(--line); background: var(--yellow); color: #15120f; }
+.editor__head { border-bottom: 2px solid var(--line); background: var(--yellow); color: #0a0a0a; }
 .editor__head h2 { font-size: var(--step-2); }
 .editor__body { display: grid; gap: 1rem; padding: clamp(1rem, 3vw, 1.75rem); overflow-y: auto; }
 .editor__foot { justify-content: flex-end; border-top: 2px solid var(--paper-3); }
@@ -315,3 +315,8 @@ dialog.confirm { width: min(440px, calc(100vw - 2rem)); }
 .confirm__body h2 { font-size: var(--step-2); }
 .confirm__body p { color: var(--ink-2); }
 .confirm__body .btn-row { justify-content: flex-end; }
+
+/* Inline alerts for server errors */
+.form-alert { font-weight: 700; color: var(--ink); }
+.form-alert:empty { display: none; }
+.form-alert--block { padding: 1rem 1.25rem; border: 2px solid var(--line); border-left-width: 8px; border-radius: var(--radius-sm); background: var(--paper); }

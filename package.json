@@ -1,0 +1,11 @@
+{
+  "name": "east-park-entertainment",
+  "private": true,
+  "description": "East Park Entertainment website and team dashboard",
+  "scripts": {
+    "dev": "node dev-server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

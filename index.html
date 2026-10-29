@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>East Park Entertainment | The people behind the panels</title>
   <meta name="description" content="East Park Entertainment interviews comic creators, authors, artists, writers and comic shops around the world, and helps more people find them.">
-  <meta name="theme-color" content="#fbf6ec" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#131116" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="East Park Entertainment">
   <meta property="og:description" content="Interviews with the people behind the panels.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -118,23 +118,6 @@
           <div class="sticker sticker--2">★ Indie-first</div>
         </div>
       </div>
-    </section>
-
-    <!-- MARQUEE -->
-    <section class="marquee" aria-label="What we cover">
-      <div class="marquee__track" id="marquee">
-        <ul class="marquee__list" role="list">
-          <li>Comic creators</li><li>✦</li><li>Authors</li><li>✦</li><li>Artists</li><li>✦</li><li>Writers</li><li>✦</li><li>Comic shops</li><li>✦</li><li>Inkers</li><li>✦</li><li>Colourists</li><li>✦</li><li>Letterers</li><li>✦</li><li>Zine makers</li><li>✦</li>
-        </ul>
-        <ul class="marquee__list" role="list" aria-hidden="true">
-          <li>Comic creators</li><li>✦</li><li>Authors</li><li>✦</li><li>Artists</li><li>✦</li><li>Writers</li><li>✦</li><li>Comic shops</li><li>✦</li><li>Inkers</li><li>✦</li><li>Colourists</li><li>✦</li><li>Letterers</li><li>✦</li><li>Zine makers</li><li>✦</li>
-        </ul>
-      </div>
-      <button type="button" class="marquee__pause" id="marquee-pause" aria-pressed="false">
-        <span class="visually-hidden">Pause scrolling text</span>
-        <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg>
-      </button>
     </section>
 
     <!-- FEATURED -->
@@ -333,6 +316,10 @@
           </div>
           <label class="check"><input type="checkbox" name="consent" id="f-consent" required aria-describedby="f-consent-err"> <span>I'm happy for East Park to contact me about this pitch. <span aria-hidden="true">*</span></span></label>
           <p class="error field-error-solo" id="f-consent-err"></p>
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Leave this field empty</label>
+            <input type="text" id="f-website" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <button class="btn btn--red pitch__submit" type="submit">
             Send pitch
             <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-8-6 16-2-6z"/></svg>

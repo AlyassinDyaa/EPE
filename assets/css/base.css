@@ -4,26 +4,27 @@
    ========================================================= */
 
 :root {
-  --paper: #fbf6ec;
-  --paper-2: #f3ebdc;
-  --paper-3: #e7dbc4;
-  --ink: #15120f;
-  --ink-2: #4b443d;
-  --line: #15120f;
-  --shadow-c: #15120f;
+  --paper: #ffffff;
+  --paper-2: #f4f4f5;
+  --paper-3: #e4e4e7;
+  --ink: #0a0a0a;
+  --ink-2: #52525b;
+  --line: #0a0a0a;
+  --shadow-c: #0a0a0a;
 
-  --red: #c93519;
-  --blue: #2447e0;
-  --yellow: #ffcc2e;
-  --mint: #2fd39a;
-  --violet: #7b5cff;
+  /* Monochrome palette: the old accent names map to shades of gray. */
+  --red: #0a0a0a;
+  --blue: #3f3f46;
+  --yellow: #e4e4e7;
+  --mint: #d4d4d8;
+  --violet: #71717a;
   --on-red: #ffffff;
   --on-blue: #ffffff;
-  --on-yellow: #15120f;
-  --on-mint: #15120f;
+  --on-yellow: #0a0a0a;
+  --on-mint: #0a0a0a;
   --on-violet: #ffffff;
 
-  --focus: #2447e0;
+  --focus: #0a0a0a;
   --focus-ring: 0 0 0 3px var(--paper), 0 0 0 6px var(--focus);
 
   --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
@@ -53,24 +54,26 @@
 }
 
 :root[data-theme="dark"] {
-  --paper: #131116;
-  --paper-2: #1c1a21;
-  --paper-3: #2a2631;
-  --ink: #f5eee2;
-  --ink-2: #c1b7aa;
-  --line: #f5eee2;
-  --shadow-c: #f5eee2;
+  --paper: #0a0a0a;
+  --paper-2: #18181b;
+  --paper-3: #27272a;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --line: #fafafa;
+  --shadow-c: #fafafa;
 
-  --red: #ff6b4a;
-  --blue: #8ea2ff;
-  --yellow: #ffd54a;
-  --mint: #45e0aa;
-  --violet: #a690ff;
-  --on-red: #15120f;
-  --on-blue: #0e0e16;
-  --on-violet: #0e0e16;
+  --red: #fafafa;
+  --blue: #d4d4d8;
+  --yellow: #e4e4e7;
+  --mint: #a1a1aa;
+  --violet: #52525b;
+  --on-red: #0a0a0a;
+  --on-blue: #0a0a0a;
+  --on-yellow: #0a0a0a;
+  --on-mint: #0a0a0a;
+  --on-violet: #ffffff;
 
-  --focus: #ffd54a;
+  --focus: #fafafa;
   color-scheme: dark;
 }
 
@@ -82,9 +85,9 @@
   --ink-2: #000000;
   --line: #000000;
   --shadow-c: #000000;
-  --red: #a3200a;
-  --blue: #0022b8;
-  --focus: #0022b8;
+  --red: #000000;
+  --blue: #000000;
+  --focus: #000000;
 }
 :root[data-contrast="high"][data-theme="dark"] {
   --paper: #000000;
@@ -94,9 +97,9 @@
   --ink-2: #ffffff;
   --line: #ffffff;
   --shadow-c: #ffffff;
-  --red: #ff8a70;
-  --blue: #aab8ff;
-  --focus: #ffff00;
+  --red: #ffffff;
+  --blue: #ffffff;
+  --focus: #ffffff;
 }
 
 :root[data-text="1"] { font-size: 112.5%; }
@@ -161,7 +164,7 @@ a { color: inherit; text-underline-offset: 3px; }
 h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.05; letter-spacing: -0.02em; font-weight: 800; text-wrap: balance; }
 p { text-wrap: pretty; }
 ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
-::selection { background: var(--yellow); color: #15120f; }
+::selection { background: var(--yellow); color: #0a0a0a; }
 
 :focus { outline: none; }
 [tabindex="-1"]:focus-visible { outline: none; }
@@ -191,12 +194,12 @@ ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
   z-index: 1000;
   padding: 0.75rem 1.1rem;
   background: var(--yellow);
-  color: #15120f;
+  color: #0a0a0a;
   font-weight: 700;
   border: var(--border);
-  border-color: #15120f;
+  border-color: #0a0a0a;
   border-radius: var(--radius-sm);
-  box-shadow: 4px 4px 0 #15120f;
+  box-shadow: 4px 4px 0 #0a0a0a;
   transform: translateY(-200%);
   transition: transform 0.2s var(--ease);
 }
@@ -353,7 +356,7 @@ ul[role="list"], ol[role="list"] { list-style: none; padding: 0; }
   transition: transform 0.25s var(--ease-spring);
 }
 .switch[aria-checked="true"] { background: var(--mint); }
-.switch[aria-checked="true"]::after { transform: translateX(24px); background: #15120f; }
+.switch[aria-checked="true"]::after { transform: translateX(24px); background: #0a0a0a; }
 
 /* ---------- Toasts ---------- */
 .toast-region {
@@ -396,7 +399,7 @@ dialog.modal {
 }
 dialog.modal[open] { animation: pop-in 0.35s var(--ease-spring); }
 dialog.modal::backdrop {
-  background: rgb(21 18 15 / 0.6);
+  background: rgb(10 10 10 / 0.6);
   backdrop-filter: blur(4px);
 }
 .modal__close { position: sticky; top: 0.75rem; float: right; margin: 0.75rem 0.75rem 0 0; z-index: 2; background: var(--paper); }
@@ -429,7 +432,7 @@ dialog.modal::backdrop {
   border: var(--border);
   border-radius: 12px;
   background: var(--yellow);
-  color: #15120f;
+  color: #0a0a0a;
   box-shadow: var(--shadow-sm);
   font-size: 1rem;
   transform: rotate(-6deg);
@@ -442,7 +445,7 @@ dialog.modal::backdrop {
 /* Avatars: generated portraits — halftone + initials, no external images needed. */
 .avatar {
   --c: var(--yellow);
-  --fg: #15120f;
+  --fg: #0a0a0a;
   position: relative;
   display: grid;
   place-items: center;
@@ -461,7 +464,7 @@ dialog.modal::backdrop {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-image: radial-gradient(circle, rgb(21 18 15 / 0.28) 1.3px, transparent 1.7px);
+  background-image: radial-gradient(circle, rgb(10 10 10 / 0.28) 1.3px, transparent 1.7px);
   background-size: 8px 8px;
   mask-image: linear-gradient(135deg, transparent 30%, #000 100%);
 }

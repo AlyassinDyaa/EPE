@@ -34,12 +34,12 @@
           <p class="error" id="l-name-err"></p>
         </div>
         <div class="field">
-          <label for="l-pass">Passcode</label>
-          <input class="input" id="l-pass" name="pass" type="password" autocomplete="current-password" required aria-describedby="l-pass-hint l-pass-err">
-          <p class="hint" id="l-pass-hint">Demo build: the passcode is set in <code>assets/js/admin.js</code>. Add real authentication before going live.</p>
+          <label for="l-pass">Team password</label>
+          <input class="input" id="l-pass" name="password" type="password" autocomplete="current-password" required aria-describedby="l-pass-err">
           <p class="error" id="l-pass-err"></p>
         </div>
-        <button class="btn btn--red" type="submit">Sign in</button>
+        <button class="btn btn--red" type="submit" id="login-btn">Sign in</button>
+        <p class="form-alert" id="login-alert" role="alert"></p>
       </form>
     </div>
     <div class="login__art" aria-hidden="true">
@@ -96,6 +96,7 @@
       </header>
 
       <main id="main" tabindex="-1" class="views">
+        <p class="form-alert form-alert--block" id="load-alert" role="alert" hidden></p>
 
         <!-- OVERVIEW -->
         <section data-view="overview" aria-labelledby="view-title">
@@ -218,18 +219,18 @@
                 <p class="hint" id="set-ann-hint">Shown at the very top of the public site. 120 characters max.</p>
               </div>
               <label class="check"><input type="checkbox" id="set-show" name="showAnnouncement"> <span>Show the announcement bar</span></label>
-              <div class="form-2">
-                <div class="field"><label for="set-followers">Social followers</label><input class="input" id="set-followers" name="followers" type="number" min="0" inputmode="numeric"></div>
-                <div class="field"><label for="set-subs">Newsletter subscribers</label><input class="input" id="set-subs" name="subscribers" type="number" min="0" inputmode="numeric"></div>
+              <div class="field">
+                <label for="set-followers">Social followers</label>
+                <input class="input" id="set-followers" name="followers" type="number" min="0" inputmode="numeric" aria-describedby="set-followers-hint">
+                <p class="hint" id="set-followers-hint">Shown on the home page, rounded to thousands.</p>
               </div>
               <button class="btn btn--red" type="submit">Save settings</button>
             </form>
             <div class="panel-card form-stack">
               <h2>Data</h2>
-              <p class="muted">Everything is stored in this browser for now. Export a backup, or reset to the demo content.</p>
+              <p class="muted">Everything is saved to the database. Download a full backup of interviews, shops, pitches and settings.</p>
               <div class="btn-row">
                 <button type="button" class="btn btn--yellow" id="export">Export JSON</button>
-                <button type="button" class="btn btn--ghost" id="reset">Reset demo data</button>
               </div>
             </div>
           </div>
