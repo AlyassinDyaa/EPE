@@ -7,9 +7,6 @@ code { font-family: ui-monospace, "Cascadia Code", Consolas, monospace; font-siz
 .muted { color: var(--ink-2); font-size: var(--step--1); }
 .muted-link { color: var(--ink-2); font-weight: 700; font-size: var(--step--1); text-decoration: none; }
 .muted-link:hover { color: var(--ink); text-decoration: underline; }
-.i-sun { display: none; }
-:root[data-theme="dark"] .i-sun { display: block; }
-:root[data-theme="dark"] .i-moon { display: none; }
 
 /* ---------- Sign in ---------- */
 .login { min-height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }

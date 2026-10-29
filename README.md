@@ -58,11 +58,11 @@ Built to WCAG 2.2 AA:
 - Full keyboard support with visible focus
 - Native `<dialog>` for modals
 - Screen-reader announcements for filter results, toasts and form errors
-- Respects `prefers-reduced-motion` and `prefers-color-scheme`, and supports forced-colours mode
+- Respects `prefers-reduced-motion` and supports forced-colours mode
 - 44px minimum touch targets
 - Atkinson Hyperlegible body font
 
-The ♿ button opens settings for text size, theme, high contrast, reduced motion, readable spacing and link highlighting.
+The ♿ button opens settings for text size, high contrast, reduced motion, readable spacing and link highlighting.
 
 ## Structure
 
@@ -76,7 +76,7 @@ assets/
   css/site.css    public site
   css/admin.css   dashboard
   js/store.js     API client and shared helpers
-  js/a11y.js      accessibility preferences, theme, toasts
+  js/a11y.js      accessibility preferences, toasts
   js/site.js      public site
   js/admin.js     dashboard
 dev-server.js     local server for static files and /api

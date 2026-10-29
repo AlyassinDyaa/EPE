@@ -41,7 +41,6 @@ body {
   background: linear-gradient(transparent 58%, var(--yellow) 58% 90%, transparent 90%);
   padding-inline: 0.1em;
 }
-:root[data-theme="dark"] .hl { color: var(--ink); background: linear-gradient(transparent 58%, color-mix(in srgb, var(--yellow) 45%, transparent) 58% 90%, transparent 90%); }
 
 .linklike {
   display: inline;
@@ -126,9 +125,6 @@ body {
 .nav__cta { margin-left: 0.5rem; }
 .nav__toggle { display: none; }
 .header-tools { display: flex; gap: 0.5rem; }
-.i-sun { display: none; }
-:root[data-theme="dark"] .i-sun { display: block; }
-:root[data-theme="dark"] .i-moon { display: none; }
 
 .burger { display: grid; gap: 5px; width: 22px; }
 .burger span { height: 2.5px; border-radius: 2px; background: currentColor; transition: transform 0.3s var(--ease), opacity 0.2s; }

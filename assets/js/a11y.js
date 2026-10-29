@@ -1,4 +1,4 @@
-/* Accessibility preferences, theme toggle and toasts — shared by every page. */
+/* Accessibility preferences and toasts — shared by every page. */
 (function () {
   "use strict";
 
@@ -18,7 +18,6 @@
   const motionReduced = () => (prefs.motion === undefined ? mq("(prefers-reduced-motion: reduce)") : !!prefs.motion);
 
   function apply() {
-    root.dataset.theme = prefs.theme || (mq("(prefers-color-scheme: dark)") ? "dark" : "light");
     root.dataset.text = String(prefs.text || 0);
     root.dataset.contrast = prefs.contrast ? "high" : "normal";
     root.dataset.motion = motionReduced() ? "reduce" : "full";
@@ -83,15 +82,6 @@
           </div>
         </div>
       </div>
-      <div class="a11y-group">
-        <div class="a11y-row">
-          <span class="label" id="lbl-theme">Theme</span>
-          <div class="seg" role="group" aria-labelledby="lbl-theme">
-            <button type="button" data-theme-set="light">Light</button>
-            <button type="button" data-theme-set="dark">Dark</button>
-          </div>
-        </div>
-      </div>
       ${SWITCHES.map(([k, l, d]) => `
       <div class="a11y-group">
         <div class="a11y-row">
@@ -109,7 +99,6 @@
       const t = e.target.closest("button");
       if (!t) return;
       if (t.dataset.text !== undefined) set("text", Number(t.dataset.text));
-      else if (t.dataset.themeSet) set("theme", t.dataset.themeSet);
       else if (t.dataset.pref) {
         const key = t.dataset.pref;
         const on = key === "motion" ? !motionReduced() : !prefs[key];
@@ -141,15 +130,9 @@
 
   function syncControls() {
     document.querySelectorAll("[data-text]").forEach((b) => b.tagName === "BUTTON" && b.setAttribute("aria-pressed", String(String(prefs.text || 0) === b.dataset.text)));
-    document.querySelectorAll("[data-theme-set]").forEach((b) => b.setAttribute("aria-pressed", String(root.dataset.theme === b.dataset.themeSet)));
     document.querySelectorAll(".switch[data-pref]").forEach((b) => {
       const k = b.dataset.pref;
       b.setAttribute("aria-checked", String(k === "motion" ? motionReduced() : !!prefs[k]));
-    });
-    document.querySelectorAll("[data-theme-toggle]").forEach((b) => {
-      const dark = root.dataset.theme === "dark";
-      b.setAttribute("aria-pressed", String(dark));
-      b.setAttribute("aria-label", dark ? "Switch to light theme" : "Switch to dark theme");
     });
   }
 
@@ -161,9 +144,6 @@
       trigger.setAttribute("aria-expanded", "false");
       trigger.addEventListener("click", () => (panel.hidden ? open() : close(true)));
     }
-    document.querySelectorAll("[data-theme-toggle]").forEach((b) =>
-      b.addEventListener("click", () => set("theme", root.dataset.theme === "dark" ? "light" : "dark"))
-    );
     document.querySelectorAll("[data-open-a11y]").forEach((b) => b.addEventListener("click", (e) => { e.preventDefault(); open(); }));
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !panel.hidden) close(true); });
     document.addEventListener("pointerdown", (e) => {
